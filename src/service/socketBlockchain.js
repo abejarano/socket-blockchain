@@ -1,6 +1,7 @@
 'use strict'
 const socketio = require('socket.io');
-const rpc = require('../rpc.conf');
+const rpcConnections = require('./rpcConnections');
+
 
 class SocketBlockchain {
 
@@ -15,9 +16,19 @@ class SocketBlockchain {
         this.sw.on('block', data => {
             console.log(data);
         });
+
+        this.rpc = new rpcConnections();
     }
-    set sendMessageBlock(blockhash) {
-        socket.emit('block', blockhash);
+    async sendBlock(blockhash, crypto) {
+        const txs = await this.rpc.getTxBlock(blockhash);
+        try {
+            this.sw.emit('block', {
+                hashblock: blockhash,
+                coin: crypto,
+                txs: txs.tx
+            });
+        } catch(err) { }
+        
     }
 }
 
