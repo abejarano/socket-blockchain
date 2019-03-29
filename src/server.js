@@ -11,6 +11,11 @@ const PORT = process.env.PORT || 23287
 
 const ws = new socket(server);
 
+app.post('/',function(req, res){
+    console.log(req);
+    
+ });
+
 
 //corriendo el servidor
 server.listen(PORT, () => {

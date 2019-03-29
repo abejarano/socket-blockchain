@@ -11,9 +11,13 @@ class SocketBlockchain {
             console.log('cliente conectado');
             
         });
-    }
-    sendMessageTx(tx) {
 
+        this.sw.on('block', data => {
+            console.log(data);
+        });
+    }
+    set sendMessageBlock(blockhash) {
+        socket.emit('block', blockhash);
     }
 }
 
