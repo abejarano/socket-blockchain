@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 23287
 
 const ws = new socket(server);
 
-app.post('/',function(req, res){
+app.post('/block',function(req, res){
     console.log(req);
     
  });
