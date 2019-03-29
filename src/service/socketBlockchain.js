@@ -17,10 +17,10 @@ class SocketBlockchain {
             console.log(data);
         });
 
-        this.rpc = new rpcConnections();
     }
     async sendBlock(blockhash, crypto) {
-        const txs = await this.rpc.getTxBlock(blockhash);
+        const rpc = new rpcConnections(crypto);
+        const txs = await rpc.getTxBlock(blockhash);
         try {
             this.sw.emit('block', {
                 hashblock: blockhash,

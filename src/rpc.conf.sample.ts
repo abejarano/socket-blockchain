@@ -1,11 +1,13 @@
 'use strict'
 
 const conf = {
-    protocol: 'http',
-    rpcuser: '',
-    rpcpass: '',
-    rpcserver: '',
-    rpcport: '',
+    SYMBOL_CRYPTO: {
+        protocol: 'http',
+        rpcuser: '',
+        rpcpass: '',
+        rpcserver: '',
+        rpcport: '',
+    }
 };
 
 module.exports = conf;

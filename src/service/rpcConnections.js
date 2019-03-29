@@ -4,8 +4,10 @@ const rpc = require('../rpc.conf');
 
 
 class RpcConnections {
-    constructor () {
-        this.conexion = new core(rpc.protocol + '://' + rpc.rpcuser + ':' + rpc.rpcpass + '@' + rpc.rpcserver + ':' + rpc.rpcport);
+    constructor (crypto) {
+        const varRPC = rpc[crypto];
+        this.conexion = new core(
+            varRPC.protocol + '://' + varRPC.rpcuser + ':' + varRPC.rpcpass + '@' + varRPC.rpcserver + ':' + varRPC.rpcport);
     }
 
     getTxBlock(hash) {
